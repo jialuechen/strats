@@ -6,7 +6,7 @@
 
 ## Features
 + Built on reliable Interactive Brokers official Python APIs.
-+ Multiple data sources for backtesting: RDBMS, CSV files, and third-pary libraries.
++ Multiple choices for data sources for backtesting.
 + Full Integration with TA-Lib.
 + Asynchronous architecture for market events.
 
