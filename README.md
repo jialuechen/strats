@@ -6,7 +6,7 @@
 + Built on reliable Interactive Brokers official Python APIs.
 + Multiple choices for data sources for backtesting.
 + Full Integration with TA-Lib.
-+ Asynchronous architecture for market events.
++ Asynchronous architecture for running market events.
 + PostgreSQL for storing data.
 + Easy to work with other scientific or machine learning libraries to build your own strategy. 
 
