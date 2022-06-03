@@ -1,6 +1,6 @@
 # <center>Strats : Built for Professional Quants</center>
 
-## Strats is a cross-platform, asynchronous and event-driven Python library for algorithmic trading, supporting both backtesting, paper or live trading via Interactive Brokers.
+## Strats is an asynchronous and event-driven Python library for algorithmic trading, supporting both backtesting, paper or live trading via Interactive Brokers.
 
 ## Features
 + Built on reliable Interactive Brokers official Python APIs.
