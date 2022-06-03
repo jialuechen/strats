@@ -1,21 +1,26 @@
-# <center>Strats</center>
+# <center>Strats : Built for Professional Quants</center>
 
-## <center>Developed for Professional Quants</center>
-
-## Strats is a Python library for asynchronous and event-driven algorithmic trading, supporting both backtesting and live trading via Interactive Brokers.
+## Strats is a cross-platform, asynchronous and event-driven Python library for algorithmic trading, supporting both backtesting, paper or live trading via Interactive Brokers.
 
 ## Features
 + Built on reliable Interactive Brokers official Python APIs.
 + Multiple choices for data sources for backtesting.
 + Full Integration with TA-Lib.
 + Asynchronous architecture for market events.
++ PostgreSQL for storing data.
++ Easy to work with other scientific or machine learning libraries to build your own strategy. 
 
-## Required Dependencies
-+ Locally installed Interactive Brokers Trader Workstation (If you want to try paper/live trading)
-+ ibapi (please follow the official installation guide on Interactive Brokers website. For convenience you can run its setup.py to install it as a regular library)
+## Required Software
++ Latest Interactive Brokers Trader Workstation or IB Gateway(If you want to try paper/live trading)
++ PostgreSQL Server
+
+## Required Third-Party Python Library
++ ibapi (please follow the official installation guide on Interactive Brokers website. Personal recommended choice is to run its setup.py to install it as a regular library)
 + pandas
 + numpy
++ psycopg2
 + TA-Lib
+
 
 
 ## License
