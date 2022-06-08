@@ -21,7 +21,5 @@
 + psycopg2
 + TA-Lib
 
-
-
 ## License
 Apache-2.0
