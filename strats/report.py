@@ -20,14 +20,14 @@ from strats import path
 class Report():
     
     def __init__(self, feed=None, port=3000,host="0.0.0.0", password=None, **kwargs):
-        # return
+    
         self._password = password if password is not None else hashlib.sha1(
             str(datetime.datetime.now()).encode()).hexdigest()[:6]
 
-        # initilize class logger
+        
         self.log = logging.getLogger(__name__)
 
-        # override args with any (non-default) command-line args
+      
         self.args = {arg: val for arg, val in locals().items(
         ) if arg not in ('__class__', 'self', 'kwargs')}
         self.args.update(kwargs)
@@ -75,11 +75,10 @@ class Report():
             cmd_args).items() if val != parser.get_default(arg)}
         return args
 
-    # ---------------------------------------
     def send_static(self, url_path):
         return send_from_directory('_webapp/', url_path)
 
-    # ---------------------------------------
+    
     def login(self, password):
         if self._password == password:
             resp = make_response('yes')
@@ -87,7 +86,7 @@ class Report():
             return resp
         return make_response("no")
 
-    # ---------------------------------------
+    
     def algos(self, json=True):
         algos = pd.read_sql("SELECT DISTINCT algo FROM trades",
                             self.dbconn).to_dict(orient="records")
