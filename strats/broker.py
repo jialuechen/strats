@@ -1,36 +1,58 @@
 import queue
-from ibapi.client import EClient
-from ibapi.wrapper import EWrapper
+from abc import abstractclassmethod
+from datetime import datetime
+from threading import Thread
+
+import pandas as pd
+from ibapi.client import Contract, EClient
+from ibapi.order import Order
 from ibapi.utils import iswrapper
-from ibapi.order import Order 
-import threading
+from ibapi.wrapper import EWrapper
 
-class IBAPIClient(EClient):
-    def __init__(self, wrapper):
-        super().__init__(wrapper)
-    
-    def obtain_server_time(self):
-        time_queue=self.wrapper.init_time()
-        self.reqCurrentTime()
-        try:
-            server_time=time_queue.get(timeout=IBAPIClient.MAX_WAIT_TIME_SECONDS)
-        except queue.Empty:
-            print("Time queue was empty or exceeded maximum timeout of ""%d seconds"%IBAPIClient.MAX_WAIT_TIME_SECONDS)
-            server_time=None
-        while self.wrapper.is_error():
-            print(self.get_error())
-        return server_time
+from feed import Feed
 
-class Broker(EWrapper,EClient):
-    def __init__(self,ibAddr,ibPort,clientId):
-        EWrapper.__init__(self)
-        EClient.__init__(self,wrapper=self)
-        thread=threading.Thread(target=self.run)
+
+class Broker():
+
+    def __init__(self,host,port,clientId,fund=0.0):
+        # EWrapper.__init__(self)
+        # EClient.__init__(self,wrapper=self)
+        #self.connect(host,port,clientId)
+        self.feed=Feed()
+        self.feed.connect(host,port,clientId)
+        self.fund=fund
+        thread=Thread(target=self.run)
         thread.start()
-        setattr(self,"_thread",thread)
-        self.init_error()
 
-        self.connect(ibAddr,ibPort,clientId)
+    def init_error(self):
+        error_queue=queue.Queue()
+        self._errors=error_queue
 
-    def run():
-        pass
+    def is_error(self):
+        return not self._errors.empty()
+    
+    def get_error(self,timeout=5):
+        if self.is_error():
+            try:
+                return self._errors.get(timeout)
+            except queue.Empty:
+                return None
+        return None
+
+    def error(self,id,errorCode,errorString):
+        error_message=("Interactive Brokers Error ID (%d), Error Code (%d) with response '%s"%(id,errorCode,errorString))
+        self._errors.put(error_message)
+    
+    def init_time(self):
+        time_queue=queue.Queue()
+        self._time_queue=time_queue
+        return time_queue
+    
+    def save_currentTime(self,server_time):
+        self._time_queue.put(server_time)
+
+    
+
+    
+
+    
