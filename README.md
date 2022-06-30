@@ -14,6 +14,11 @@
 + Latest Interactive Brokers Trader Workstation or IB Gateway(If you want to try paper/live trading). Make sure the API port is enabled.
 + PostgreSQL Server
 
+## Installation
+```
+pip install --upgrade strats
+```
+
 ## Required Third-Party Python Library
 + ibapi (please follow the official installation guide on Interactive Brokers website. Personal recommended choice is to run its setup.py to install it as a regular library)
 + pandas
