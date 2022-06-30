@@ -7,11 +7,11 @@
 + Multiple choices for data sources for backtesting.
 + Full Integration with TA-Lib.
 + Asynchronous architecture for running market events.
-+ PostgreSQL for storing data.
++ Compatible with PostgreSQL for storing data.
 + Easy to work with other scientific or machine learning libraries to build your own strategy. 
 
 ## Required Software
-+ Latest Interactive Brokers Trader Workstation or IB Gateway(If you want to try paper/live trading)
++ Latest Interactive Brokers Trader Workstation or IB Gateway(If you want to try paper/live trading). Make sure the API port is enabled.
 + PostgreSQL Server
 
 ## Required Third-Party Python Library
@@ -22,4 +22,4 @@
 + TA-Lib
 
 ## License
-Apache-2.0
+This software is distributed under the Apache 2.0 license.
