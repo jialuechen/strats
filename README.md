@@ -20,6 +20,7 @@
 + numpy
 + psycopg2
 + TA-Lib
++ flask
 
 ## License
 This software is distributed under the Apache 2.0 license.
