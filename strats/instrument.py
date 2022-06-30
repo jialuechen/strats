@@ -1,5 +1,8 @@
 import math
+
+from ibapi.client import Contract
 from pandas import concat as pd_concat
+
 
 class Instrument(str):
     parent = None
